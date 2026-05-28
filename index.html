@@ -4,153 +4,166 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>星驰无人机俱乐部 - 穿越未来，飞驰梦想</title>
-  <meta name="description" content="星驰无人机俱乐部 — 无人机技术推广、培训、赛事组织、科普教育。CAAC驾驶执照考证，穿越机/FPV无人机培训。">
+  <meta name="description" content="星驰无人机俱乐部 — 无人机培训、CAAC考证、赛事组织、科普教育。清远·广州两大培训基地。">
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* ========================================
-       Redesign additions for homepage
+       Industrial Gray/White Redesign
        ======================================== */
 
-    /* --- Hero: Dark cinematic --- */
-    .hero-redesign {
+    :root {
+      --ind-charcoal: #2D2D2F;
+      --ind-dark: #1D1D1F;
+      --ind-mid: #6E6E73;
+      --ind-light: #86868B;
+      --ind-lighter: #D2D2D7;
+      --ind-bg: #F5F5F7;
+      --ind-white: #FFFFFF;
+      --ind-accent: #333336;
+    }
+
+    /* --- Hero: Industrial Light --- */
+    .hero-ind {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 120px 24px 80px;
-      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 40%, #16213e 70%, #0f0f1a 100%);
+      background: linear-gradient(160deg, #FAFAFA 0%, #F0F0F2 40%, #E8E8EC 100%);
       position: relative;
       overflow: hidden;
     }
 
-    .hero-redesign::before {
+    .hero-ind::before {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 600px 400px at 20% 50%, rgba(0, 102, 204, 0.15), transparent),
-        radial-gradient(ellipse 500px 300px at 80% 30%, rgba(74, 144, 217, 0.1), transparent),
-        radial-gradient(ellipse 400px 400px at 50% 80%, rgba(0, 102, 204, 0.08), transparent);
+      background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(0,0,0,0.02) 59px, rgba(0,0,0,0.02) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,0,0,0.02) 59px, rgba(0,0,0,0.02) 60px);
       pointer-events: none;
     }
 
-    /* Animated grid overlay */
-    .hero-redesign::after {
+    .hero-ind::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
+      top: -30%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%);
       pointer-events: none;
-      animation: gridShift 20s linear infinite;
     }
 
-    @keyframes gridShift {
-      0% { transform: translate(0, 0); }
-      50% { transform: translate(30px, 30px); }
-      100% { transform: translate(0, 0); }
-    }
-
-    .hero-redesign .hero-content {
+    .hero-ind .hero-content {
       max-width: 900px;
       position: relative;
       z-index: 2;
     }
 
-    .hero-redesign .hero-badge {
+    .hero-ind .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 8px 24px;
-      background: rgba(0, 102, 204, 0.15);
-      border: 1px solid rgba(0, 102, 204, 0.3);
+      background: var(--ind-white);
+      border: 1px solid var(--ind-lighter);
       border-radius: 50px;
       font-size: 13px;
       font-weight: 500;
-      color: #4A90D9;
+      color: var(--ind-mid);
       margin-bottom: 28px;
       letter-spacing: 0.05em;
-      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
-    /* Drone icon animation */
-    .hero-drone-wrap {
+    .hero-ind .hero-drone-wrap {
       width: 100px;
       height: 100px;
       margin: 0 auto 36px;
       position: relative;
-      animation: droneFloat 4s ease-in-out infinite;
+      animation: droneFloatInd 4s ease-in-out infinite;
     }
 
-    .hero-drone-wrap .drone-body {
+    .hero-ind .hero-drone-wrap .drone-body {
       width: 100px;
       height: 100px;
-      background: radial-gradient(circle at 50% 50%, rgba(0,102,204,0.2), transparent);
+      background: var(--ind-white);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 44px;
-      animation: dronePulse 3s ease-in-out infinite;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      animation: dronePulseInd 3s ease-in-out infinite;
     }
 
-    @keyframes droneFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-10px) rotate(-2deg); }
-      75% { transform: translateY(-5px) rotate(2deg); }
+    @keyframes droneFloatInd {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-10px); }
+      75% { transform: translateY(-5px); }
     }
 
-    @keyframes dronePulse {
-      0%, 100% { box-shadow: 0 0 20px rgba(0,102,204,0.2); }
-      50% { box-shadow: 0 0 40px rgba(0,102,204,0.4); }
+    @keyframes dronePulseInd {
+      0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+      50% { box-shadow: 0 4px 30px rgba(0,0,0,0.1); }
     }
 
-    .hero-redesign h1 {
+    .hero-ind h1 {
       font-size: 64px;
       font-weight: 800;
       line-height: 1.08;
       margin-bottom: 20px;
       letter-spacing: -0.03em;
-      color: #fff;
+      color: var(--ind-dark);
     }
 
-    .hero-redesign h1 .highlight {
-      background: linear-gradient(135deg, #0066CC, #4A90D9, #7BB3E8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-ind h1 .highlight {
+      color: var(--ind-charcoal);
+      position: relative;
     }
 
-    .hero-redesign p {
+    .hero-ind h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--ind-charcoal);
+      opacity: 0.15;
+      border-radius: 2px;
+    }
+
+    .hero-ind p {
       font-size: 20px;
-      color: rgba(255,255,255,0.6);
+      color: var(--ind-light);
       max-width: 640px;
       margin: 0 auto 40px;
       line-height: 1.8;
     }
 
-    .hero-redesign .hero-buttons {
+    .hero-ind .hero-buttons {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
-    .hero-redesign .btn-primary {
-      background: linear-gradient(135deg, #0066CC, #004C99);
+    .hero-ind .btn-primary {
+      background: var(--ind-charcoal);
       color: #fff;
-      box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
 
-    .hero-redesign .btn-primary:hover {
-      box-shadow: 0 8px 30px rgba(0, 102, 204, 0.6);
+    .hero-ind .btn-primary:hover {
+      background: var(--ind-dark);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
       transform: translateY(-3px);
     }
 
-    .hero-redesign .btn-ghost {
+    .hero-ind .btn-ghost {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -158,22 +171,21 @@
       border-radius: 50px;
       font-size: 16px;
       font-weight: 600;
-      border: 2px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.8);
+      border: 2px solid var(--ind-lighter);
+      color: var(--ind-mid);
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: all 0.4s ease;
       font-family: var(--font-sans);
       background: transparent;
     }
 
-    .hero-redesign .btn-ghost:hover {
-      border-color: rgba(255,255,255,0.5);
-      color: #fff;
+    .hero-ind .btn-ghost:hover {
+      border-color: var(--ind-charcoal);
+      color: var(--ind-dark);
       transform: translateY(-3px);
-      background: rgba(255,255,255,0.05);
+      background: var(--ind-white);
     }
 
-    /* Hero scroll indicator */
     .scroll-indicator {
       position: absolute;
       bottom: 40px;
@@ -184,7 +196,7 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      color: rgba(255,255,255,0.3);
+      color: var(--ind-lighter);
       font-size: 12px;
       letter-spacing: 0.1em;
     }
@@ -192,7 +204,7 @@
     .scroll-indicator .mouse {
       width: 24px;
       height: 36px;
-      border: 2px solid rgba(255,255,255,0.3);
+      border: 2px solid var(--ind-lighter);
       border-radius: 12px;
       position: relative;
     }
@@ -205,7 +217,7 @@
       transform: translateX(-50%);
       width: 4px;
       height: 8px;
-      background: rgba(255,255,255,0.5);
+      background: var(--ind-mid);
       border-radius: 2px;
       animation: scrollWheel 2s ease-in-out infinite;
     }
@@ -218,7 +230,7 @@
     /* --- Intro Section --- */
     .intro-section {
       padding: 100px 0;
-      background: #fff;
+      background: var(--ind-white);
     }
 
     .intro-grid {
@@ -234,12 +246,12 @@
       line-height: 1.15;
       margin-bottom: 20px;
       letter-spacing: -0.02em;
-      color: var(--black);
+      color: var(--ind-dark);
     }
 
     .intro-content p {
       font-size: 16px;
-      color: var(--gray-500);
+      color: var(--ind-light);
       line-height: 1.8;
       margin-bottom: 16px;
     }
@@ -251,128 +263,46 @@
     }
 
     .intro-stat-card {
-      background: var(--gray-100);
-      border-radius: var(--radius-md);
+      background: var(--ind-bg);
+      border-radius: 16px;
       padding: 32px 24px;
       text-align: center;
-      transition: var(--transition);
+      transition: all 0.4s ease;
+      border: 1px solid transparent;
     }
 
     .intro-stat-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+      border-color: var(--ind-lighter);
     }
 
     .intro-stat-card .num {
       font-size: 36px;
       font-weight: 800;
-      color: var(--primary);
+      color: var(--ind-charcoal);
       margin-bottom: 6px;
     }
 
     .intro-stat-card .label {
       font-size: 14px;
-      color: var(--gray-500);
+      color: var(--ind-light);
     }
 
-    /* --- Features with icons in circles --- */
-    .features-redesign {
-      padding: 100px 0;
-      background: var(--gray-100);
-    }
-
-    .features-redesign .section-title {
-      margin-bottom: 60px;
-    }
-
-    .features-redesign-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-
-    .feature-card-r {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      padding: 48px 32px;
-      text-align: center;
-      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      border: 1px solid rgba(0,0,0,0.04);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card-r::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(135deg, #0066CC, #4A90D9);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .feature-card-r:hover::before {
-      opacity: 1;
-    }
-
-    .feature-card-r:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    }
-
-    .feature-card-r .icon-circle {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0,102,204,0.1), rgba(74,144,217,0.05));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      margin: 0 auto 24px;
-      transition: all 0.5s ease;
-    }
-
-    .feature-card-r:hover .icon-circle {
-      background: var(--primary-gradient);
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 8px 24px rgba(0,102,204,0.3);
-    }
-
-    .feature-card-r:hover .icon-circle .emoji {
-      filter: brightness(10);
-    }
-
-    .feature-card-r h3 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--black);
-    }
-
-    .feature-card-r p {
-      font-size: 15px;
-      color: var(--gray-500);
-      line-height: 1.7;
-    }
-
-    /* --- Stats Bar --- */
-    .stats-bar {
-      background: linear-gradient(135deg, #0066CC, #004C99);
+    /* --- Stats Bar: Industrial --- */
+    .stats-bar-ind {
+      background: var(--ind-charcoal);
       padding: 80px 0;
     }
 
-    .stats-bar-grid {
+    .stats-bar-ind-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
       text-align: center;
     }
 
-    .stats-bar-item .num {
+    .stats-bar-ind-item .num {
       font-size: 48px;
       font-weight: 800;
       color: #fff;
@@ -380,15 +310,100 @@
       letter-spacing: -0.02em;
     }
 
-    .stats-bar-item .label {
+    .stats-bar-ind-item .label {
       font-size: 15px;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.6);
     }
 
-    /* --- Partners Section --- */
+    /* --- Features Industrial --- */
+    .features-ind {
+      padding: 100px 0;
+      background: var(--ind-bg);
+    }
+
+    .features-ind .section-title {
+      margin-bottom: 60px;
+    }
+
+    .features-ind-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .feature-card-ind {
+      background: #fff;
+      border-radius: 16px;
+      padding: 48px 32px;
+      text-align: center;
+      transition: all 0.5s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card-ind::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--ind-charcoal);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .feature-card-ind:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card-ind:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+
+    .feature-card-ind .icon-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--ind-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 24px;
+      transition: all 0.5s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .feature-card-ind:hover .icon-circle {
+      background: var(--ind-charcoal);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .feature-card-ind:hover .icon-circle .emoji {
+      filter: brightness(10);
+    }
+
+    .feature-card-ind h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--ind-dark);
+    }
+
+    .feature-card-ind p {
+      font-size: 15px;
+      color: var(--ind-light);
+      line-height: 1.7;
+    }
+
+    /* --- Partners --- */
     .partners-section {
       padding: 80px 0;
-      background: #fff;
+      background: var(--ind-white);
       text-align: center;
     }
 
@@ -396,7 +411,7 @@
       font-size: 28px;
       font-weight: 700;
       margin-bottom: 40px;
-      color: var(--black);
+      color: var(--ind-dark);
     }
 
     .partners-grid {
@@ -408,78 +423,89 @@
 
     .partner-item {
       padding: 20px 32px;
-      background: var(--gray-100);
-      border-radius: var(--radius-sm);
+      background: var(--ind-bg);
+      border-radius: 12px;
       font-size: 15px;
       font-weight: 600;
-      color: var(--gray-700);
-      transition: var(--transition);
+      color: var(--ind-mid);
+      transition: all 0.3s ease;
       border: 1px solid transparent;
     }
 
     .partner-item:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+      border-color: var(--ind-lighter);
+      color: var(--ind-charcoal);
       transform: translateY(-2px);
+      background: var(--ind-white);
     }
 
-    /* --- CTA Redesign --- */
-    .cta-redesign {
+    /* --- CTA Industrial --- */
+    .cta-ind {
       padding: 120px 24px;
       text-align: center;
-      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+      background: var(--ind-bg);
       position: relative;
       overflow: hidden;
     }
 
-    .cta-redesign::before {
+    .cta-ind::before {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 600px 300px at 30% 50%, rgba(0,102,204,0.12), transparent),
-        radial-gradient(ellipse 400px 400px at 70% 50%, rgba(74,144,217,0.08), transparent);
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(0,0,0,0.015) 59px, rgba(0,0,0,0.015) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,0,0,0.015) 59px, rgba(0,0,0,0.015) 60px);
       pointer-events: none;
     }
 
-    .cta-redesign .container {
-      position: relative;
-      z-index: 1;
-    }
+    .cta-ind .container { position: relative; z-index: 1; }
 
-    .cta-redesign h2 {
+    .cta-ind h2 {
       font-size: 44px;
       font-weight: 800;
-      color: #fff;
+      color: var(--ind-dark);
       margin-bottom: 16px;
       letter-spacing: -0.02em;
     }
 
-    .cta-redesign p {
+    .cta-ind p {
       font-size: 18px;
-      color: rgba(255,255,255,0.5);
+      color: var(--ind-light);
       max-width: 500px;
       margin: 0 auto 36px;
     }
 
-    .cta-redesign .btn-group {
+    .cta-ind .btn-group {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
-    .cta-redesign .btn-white {
-      background: #fff;
-      color: #0066CC;
+    .cta-ind .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      background: var(--ind-charcoal);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-family: var(--font-sans);
+      border: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     }
 
-    .cta-redesign .btn-white:hover {
-      background: var(--gray-100);
+    .cta-ind .btn-dark:hover {
+      background: var(--ind-dark);
       transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
     }
 
-    .cta-redesign .btn-outline-light {
+    .cta-ind .btn-outline-dark {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -487,65 +513,66 @@
       border-radius: 50px;
       font-size: 16px;
       font-weight: 600;
-      border: 2px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.8);
+      border: 2px solid var(--ind-lighter);
+      color: var(--ind-mid);
       cursor: pointer;
       transition: all 0.4s ease;
       font-family: var(--font-sans);
       background: transparent;
     }
 
-    .cta-redesign .btn-outline-light:hover {
-      border-color: #fff;
-      color: #fff;
+    .cta-ind .btn-outline-dark:hover {
+      border-color: var(--ind-charcoal);
+      color: var(--ind-dark);
       transform: translateY(-3px);
+      background: var(--ind-white);
     }
 
     /* --- Responsive --- */
     @media (max-width: 1024px) {
-      .hero-redesign h1 { font-size: 48px; }
+      .hero-ind h1 { font-size: 48px; }
       .intro-grid { grid-template-columns: 1fr; gap: 40px; }
-      .features-redesign-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-bar-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-ind-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-bar-ind-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
-      .hero-redesign h1 { font-size: 36px; }
-      .hero-redesign p { font-size: 16px; }
-      .features-redesign-grid { grid-template-columns: 1fr; }
+      .hero-ind h1 { font-size: 36px; }
+      .hero-ind p { font-size: 16px; }
+      .features-ind-grid { grid-template-columns: 1fr; }
       .intro-stats { grid-template-columns: 1fr; }
-      .stats-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-      .stats-bar-item .num { font-size: 36px; }
-      .cta-redesign h2 { font-size: 32px; }
+      .stats-bar-ind-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .stats-bar-ind-item .num { font-size: 36px; }
+      .cta-ind h2 { font-size: 32px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ======== Navigation (same as other pages) ======== -->
-  <nav class="navbar" style="background:rgba(10,10,15,0.85);border-bottom-color:rgba(255,255,255,0.06);">
+  <!-- ======== Navigation ======== -->
+  <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="navbar-brand" style="color:#fff;">
+      <a href="index.html" class="navbar-brand">
         <span class="logo-icon">✈</span>
         星驰无人机俱乐部
       </a>
       <div class="nav-links">
-        <a href="index.html" class="active" style="color:#4A90D9;">首页</a>
-        <a href="about.html" style="color:rgba(255,255,255,0.7);">关于我们</a>
-        <a href="services.html" style="color:rgba(255,255,255,0.7);">服务项目</a>
-        <a href="cases.html" style="color:rgba(255,255,255,0.7);">客户案例</a>
-        <a href="contact.html" style="color:rgba(255,255,255,0.7);">联系我们</a>
+        <a href="index.html" class="active">首页</a>
+        <a href="about.html">关于我们</a>
+        <a href="services.html">服务项目</a>
+        <a href="cases.html">客户案例</a>
+        <a href="contact.html">联系我们</a>
       </div>
-      <button class="nav-toggle" aria-label="菜单" style="color:#fff;">
-        <span style="background:#fff;"></span>
-        <span style="background:#fff;"></span>
-        <span style="background:#fff;"></span>
+      <button class="nav-toggle" aria-label="菜单">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </nav>
 
   <!-- ======== Hero ======== -->
-  <section class="hero-redesign">
+  <section class="hero-ind">
     <div class="hero-content">
       <div class="hero-drone-wrap">
         <div class="drone-body">🛸</div>
@@ -560,7 +587,7 @@
         让每个人都能触摸天空，飞驰梦想。
       </p>
       <div class="hero-buttons">
-        <a href="services.html" class="btn btn-primary btn-lg">了解服务项目</a>
+        <a href="services.html" class="btn btn-primary">了解服务项目</a>
         <a href="contact.html" class="btn-ghost">联系我们 →</a>
       </div>
     </div>
@@ -570,23 +597,23 @@
     </div>
   </section>
 
-  <!-- ======== 数据概览 ======== -->
-  <section class="stats-bar">
+  <!-- ======== Stats Bar ======== -->
+  <section class="stats-bar-ind">
     <div class="container">
-      <div class="stats-bar-grid">
-        <div class="stats-bar-item fade-in">
+      <div class="stats-bar-ind-grid">
+        <div class="stats-bar-ind-item fade-in">
           <div class="num">500+</div>
           <div class="label">培训学员</div>
         </div>
-        <div class="stats-bar-item fade-in">
+        <div class="stats-bar-ind-item fade-in">
           <div class="num">30+</div>
           <div class="label">合作院校/机构</div>
         </div>
-        <div class="stats-bar-item fade-in">
+        <div class="stats-bar-ind-item fade-in">
           <div class="num">50+</div>
           <div class="label">赛事活动</div>
         </div>
-        <div class="stats-bar-item fade-in">
+        <div class="stats-bar-ind-item fade-in">
           <div class="num">95%</div>
           <div class="label">考证通过率</div>
         </div>
@@ -601,7 +628,7 @@
         <div class="intro-content fade-in">
           <h2>专注无人机<br>培养未来飞手</h2>
           <p>
-            星驰无人机俱乐部依托广东弘栎电子设备有限公司的技术支持，在清远和广州设立两大培训基地，
+            星驰无人机俱乐部在清远和广州设立两大培训基地，
             致力于无人机技术推广、FPV穿越机培训、CAAC驾驶执照考证辅导、赛事组织与科普教育。
           </p>
           <p>
@@ -633,40 +660,40 @@
   </section>
 
   <!-- ======== 核心业务 ======== -->
-  <section class="features-redesign">
+  <section class="features-ind">
     <div class="container">
       <h2 class="section-title fade-in">核心业务</h2>
-      <p class="section-subtitle fade-in">从培训到赛事，从科普到飞手人才输送，打造完整的无人机产业服务链</p>
-      <div class="features-redesign-grid">
-        <div class="feature-card-r fade-in">
+      <p class="section-subtitle fade-in">从培训到赛事，从科普到飞手培养，打造完整的无人机产业服务链</p>
+      <div class="features-ind-grid">
+        <div class="feature-card-ind fade-in">
           <div class="icon-circle">🎓</div>
           <h3>FPV无人机培训</h3>
           <p>穿越机/FPV无人机专业培训，CAAC驾驶执照考证辅导，从零基础到职业飞手一站式教学。</p>
         </div>
-        <div class="feature-card-r fade-in">
+        <div class="feature-card-ind fade-in">
           <div class="icon-circle">🏆</div>
           <h3>赛事组织</h3>
           <p>策划举办"星驰杯"穿越机大赛，汇聚全国顶尖飞手，打造高水平竞技交流平台。</p>
         </div>
-        <div class="feature-card-r fade-in">
+        <div class="feature-card-ind fade-in">
           <div class="icon-circle">🔬</div>
           <h3>科普进校园</h3>
           <p>无人机科普教育进校园活动，让青少年近距离感受科技魅力，激发航空梦想。</p>
         </div>
-        <div class="feature-card-r fade-in">
+        <div class="feature-card-ind fade-in">
           <div class="icon-circle">⚽</div>
           <h3>无人机足球体验</h3>
           <p>创新无人机足球项目，融合体育竞技与无人机操控，趣味与科技并重。</p>
         </div>
-        <div class="feature-card-r fade-in">
+        <div class="feature-card-ind fade-in">
           <div class="icon-circle">👨‍✈️</div>
           <h3>飞手人才培养</h3>
           <p>系统化飞手人才培养体系，为行业输送高素质无人机应用人才。</p>
         </div>
-        <div class="feature-card-r fade-in">
+        <div class="feature-card-ind fade-in">
           <div class="icon-circle">📡</div>
-          <h3>技术支持</h3>
-          <p>广东弘栎电子设备有限公司提供专业技术支持，保障设备与教学质量。</p>
+          <h3>设备保障</h3>
+          <p>先进的无人机教学设备和完善的训练场地，确保每一位学员获得最佳培训体验。</p>
         </div>
       </div>
     </div>
@@ -681,19 +708,18 @@
         <span class="partner-item">广东工匠学院</span>
         <span class="partner-item">清远体育中心</span>
         <span class="partner-item">渔珠汇创意园</span>
-        <span class="partner-item">广东弘栎电子</span>
       </div>
     </div>
   </section>
 
   <!-- ======== CTA ======== -->
-  <section class="cta-redesign">
+  <section class="cta-ind">
     <div class="container">
       <h2 class="fade-in">准备好飞向未来了吗？</h2>
       <p class="fade-in">无论你是零基础爱好者，还是寻求合作的教育机构，星驰无人机俱乐部都欢迎你的加入。</p>
       <div class="btn-group fade-in">
-        <a href="contact.html" class="btn btn-white btn-lg">立即联系我们</a>
-        <a href="tel:19927635863" class="btn-outline-light">📞 姜老师：199-2763-5863</a>
+        <a href="contact.html" class="btn-dark">立即联系我们</a>
+        <a href="tel:19927635863" class="btn-outline-dark">📞 姜老师：199-2763-5863</a>
       </div>
     </div>
   </section>
@@ -704,7 +730,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <h3>✈ 星驰无人机俱乐部</h3>
-          <p>专注无人机技术推广、培训、赛事组织与科普教育。技术支持：广东弘栎电子设备有限公司。</p>
+          <p>专注无人机技术推广、培训、赛事组织与科普教育。</p>
         </div>
         <div class="footer-col">
           <h4>快速链接</h4>
@@ -732,7 +758,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 星驰无人机俱乐部 | 技术支持：广东弘栎电子设备有限公司</p>
+        <p>© 2025 星驰无人机俱乐部</p>
         <div class="footer-social">
           <a href="#" title="微信公众号">💬</a>
           <a href="#" title="抖音">🎵</a>
