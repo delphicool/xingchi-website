@@ -6,102 +6,665 @@
   <title>星驰无人机俱乐部 - 穿越未来，飞驰梦想</title>
   <meta name="description" content="星驰无人机俱乐部 — 无人机技术推广、培训、赛事组织、科普教育。CAAC驾驶执照考证，穿越机/FPV无人机培训。">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ========================================
+       Redesign additions for homepage
+       ======================================== */
+
+    /* --- Hero: Dark cinematic --- */
+    .hero-redesign {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 40%, #16213e 70%, #0f0f1a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-redesign::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 20% 50%, rgba(0, 102, 204, 0.15), transparent),
+        radial-gradient(ellipse 500px 300px at 80% 30%, rgba(74, 144, 217, 0.1), transparent),
+        radial-gradient(ellipse 400px 400px at 50% 80%, rgba(0, 102, 204, 0.08), transparent);
+      pointer-events: none;
+    }
+
+    /* Animated grid overlay */
+    .hero-redesign::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      animation: gridShift 20s linear infinite;
+    }
+
+    @keyframes gridShift {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(30px, 30px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .hero-redesign .hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-redesign .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 24px;
+      background: rgba(0, 102, 204, 0.15);
+      border: 1px solid rgba(0, 102, 204, 0.3);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #4A90D9;
+      margin-bottom: 28px;
+      letter-spacing: 0.05em;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Drone icon animation */
+    .hero-drone-wrap {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 36px;
+      position: relative;
+      animation: droneFloat 4s ease-in-out infinite;
+    }
+
+    .hero-drone-wrap .drone-body {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at 50% 50%, rgba(0,102,204,0.2), transparent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      animation: dronePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes droneFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(-2deg); }
+      75% { transform: translateY(-5px) rotate(2deg); }
+    }
+
+    @keyframes dronePulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(0,102,204,0.2); }
+      50% { box-shadow: 0 0 40px rgba(0,102,204,0.4); }
+    }
+
+    .hero-redesign h1 {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .hero-redesign h1 .highlight {
+      background: linear-gradient(135deg, #0066CC, #4A90D9, #7BB3E8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-redesign p {
+      font-size: 20px;
+      color: rgba(255,255,255,0.6);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .hero-redesign .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-redesign .btn-primary {
+      background: linear-gradient(135deg, #0066CC, #004C99);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4);
+    }
+
+    .hero-redesign .btn-primary:hover {
+      box-shadow: 0 8px 30px rgba(0, 102, 204, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .hero-redesign .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 36px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      font-family: var(--font-sans);
+      background: transparent;
+    }
+
+    .hero-redesign .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Hero scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.3);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    .scroll-indicator .mouse {
+      width: 24px;
+      height: 36px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .scroll-indicator .mouse::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 2px;
+      animation: scrollWheel 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollWheel {
+      0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* --- Intro Section --- */
+    .intro-section {
+      padding: 100px 0;
+      background: #fff;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .intro-content h2 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .intro-content p {
+      font-size: 16px;
+      color: var(--gray-500);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .intro-stat-card {
+      background: var(--gray-100);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .intro-stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .intro-stat-card .num {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .intro-stat-card .label {
+      font-size: 14px;
+      color: var(--gray-500);
+    }
+
+    /* --- Features with icons in circles --- */
+    .features-redesign {
+      padding: 100px 0;
+      background: var(--gray-100);
+    }
+
+    .features-redesign .section-title {
+      margin-bottom: 60px;
+    }
+
+    .features-redesign-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .feature-card-r {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 48px 32px;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1px solid rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card-r::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #0066CC, #4A90D9);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .feature-card-r:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card-r:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .feature-card-r .icon-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0,102,204,0.1), rgba(74,144,217,0.05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 24px;
+      transition: all 0.5s ease;
+    }
+
+    .feature-card-r:hover .icon-circle {
+      background: var(--primary-gradient);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 24px rgba(0,102,204,0.3);
+    }
+
+    .feature-card-r:hover .icon-circle .emoji {
+      filter: brightness(10);
+    }
+
+    .feature-card-r h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .feature-card-r p {
+      font-size: 15px;
+      color: var(--gray-500);
+      line-height: 1.7;
+    }
+
+    /* --- Stats Bar --- */
+    .stats-bar {
+      background: linear-gradient(135deg, #0066CC, #004C99);
+      padding: 80px 0;
+    }
+
+    .stats-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .stats-bar-item .num {
+      font-size: 48px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .stats-bar-item .label {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* --- Partners Section --- */
+    .partners-section {
+      padding: 80px 0;
+      background: #fff;
+      text-align: center;
+    }
+
+    .partners-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--black);
+    }
+
+    .partners-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .partner-item {
+      padding: 20px 32px;
+      background: var(--gray-100);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gray-700);
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .partner-item:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* --- CTA Redesign --- */
+    .cta-redesign {
+      padding: 120px 24px;
+      text-align: center;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-redesign::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 300px at 30% 50%, rgba(0,102,204,0.12), transparent),
+        radial-gradient(ellipse 400px 400px at 70% 50%, rgba(74,144,217,0.08), transparent);
+      pointer-events: none;
+    }
+
+    .cta-redesign .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-redesign h2 {
+      font-size: 44px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-redesign p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.5);
+      max-width: 500px;
+      margin: 0 auto 36px;
+    }
+
+    .cta-redesign .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-redesign .btn-white {
+      background: #fff;
+      color: #0066CC;
+    }
+
+    .cta-redesign .btn-white:hover {
+      background: var(--gray-100);
+      transform: translateY(-3px);
+    }
+
+    .cta-redesign .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 36px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-family: var(--font-sans);
+      background: transparent;
+    }
+
+    .cta-redesign .btn-outline-light:hover {
+      border-color: #fff;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .hero-redesign h1 { font-size: 48px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+      .features-redesign-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-bar-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-redesign h1 { font-size: 36px; }
+      .hero-redesign p { font-size: 16px; }
+      .features-redesign-grid { grid-template-columns: 1fr; }
+      .intro-stats { grid-template-columns: 1fr; }
+      .stats-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .stats-bar-item .num { font-size: 36px; }
+      .cta-redesign h2 { font-size: 32px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ======== Navigation ======== -->
-  <nav class="navbar">
+  <!-- ======== Navigation (same as other pages) ======== -->
+  <nav class="navbar" style="background:rgba(10,10,15,0.85);border-bottom-color:rgba(255,255,255,0.06);">
     <div class="container">
-      <a href="index.html" class="navbar-brand">
+      <a href="index.html" class="navbar-brand" style="color:#fff;">
         <span class="logo-icon">✈</span>
         星驰无人机俱乐部
       </a>
       <div class="nav-links">
-        <a href="index.html" class="active">首页</a>
-        <a href="about.html">关于我们</a>
-        <a href="services.html">服务项目</a>
-        <a href="cases.html">客户案例</a>
-        <a href="contact.html">联系我们</a>
+        <a href="index.html" class="active" style="color:#4A90D9;">首页</a>
+        <a href="about.html" style="color:rgba(255,255,255,0.7);">关于我们</a>
+        <a href="services.html" style="color:rgba(255,255,255,0.7);">服务项目</a>
+        <a href="cases.html" style="color:rgba(255,255,255,0.7);">客户案例</a>
+        <a href="contact.html" style="color:rgba(255,255,255,0.7);">联系我们</a>
       </div>
-      <button class="nav-toggle" aria-label="菜单">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav-toggle" aria-label="菜单" style="color:#fff;">
+        <span style="background:#fff;"></span>
+        <span style="background:#fff;"></span>
+        <span style="background:#fff;"></span>
       </button>
     </div>
   </nav>
 
-  <!-- ======== Hero Section ======== -->
-  <section class="hero">
+  <!-- ======== Hero ======== -->
+  <section class="hero-redesign">
     <div class="hero-content">
-      <div class="hero-badge">🚁 广东弘栎电子设备有限公司 技术支持</div>
-      <div class="hero-drone">🛸</div>
-      <h1>穿越未来，飞驰梦想</h1>
-      <p>星驰无人机俱乐部 — 专注无人机技术推广、培训考证、赛事组织与科普教育，让每一个人都能驾驭天空。</p>
+      <div class="hero-drone-wrap">
+        <div class="drone-body">🛸</div>
+      </div>
+      <div class="hero-badge">✦ 清远 · 广州 两大培训基地</div>
+      <h1>
+        驾驭天空<br>
+        <span class="highlight">从这里开始</span>
+      </h1>
+      <p>
+        星驰无人机俱乐部 — 专注于无人机技术推广、FPV穿越机培训、CAAC考证辅导、赛事组织与科普教育。<br>
+        让每个人都能触摸天空，飞驰梦想。
+      </p>
       <div class="hero-buttons">
-        <a href="services.html" class="btn btn-primary btn-lg">了解我们的服务</a>
-        <a href="contact.html" class="btn btn-outline btn-lg">联系我们</a>
+        <a href="services.html" class="btn btn-primary btn-lg">了解服务项目</a>
+        <a href="contact.html" class="btn-ghost">联系我们 →</a>
       </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <span>向下滚动</span>
     </div>
   </section>
 
-  <!-- ======== Stats Section ======== -->
-  <section class="stats">
+  <!-- ======== 数据概览 ======== -->
+  <section class="stats-bar">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <h3 data-target="500">0+</h3>
-          <p>培训学员</p>
+      <div class="stats-bar-grid">
+        <div class="stats-bar-item fade-in">
+          <div class="num">500+</div>
+          <div class="label">培训学员</div>
         </div>
-        <div class="stat-item">
-          <h3 data-target="30">0+</h3>
-          <p>合作院校/机构</p>
+        <div class="stats-bar-item fade-in">
+          <div class="num">30+</div>
+          <div class="label">合作院校/机构</div>
         </div>
-        <div class="stat-item">
-          <h3 data-target="50">0+</h3>
-          <p>赛事活动</p>
+        <div class="stats-bar-item fade-in">
+          <div class="num">50+</div>
+          <div class="label">赛事活动</div>
         </div>
-        <div class="stat-item">
-          <h3 data-target="95">0+</h3>
-          <p>考证通过率</p>
+        <div class="stats-bar-item fade-in">
+          <div class="num">95%</div>
+          <div class="label">考证通过率</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======== Features / Core Business ======== -->
-  <section class="section">
+  <!-- ======== 关于简介 ======== -->
+  <section class="intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-content fade-in">
+          <h2>专注无人机<br>培养未来飞手</h2>
+          <p>
+            星驰无人机俱乐部依托广东弘栎电子设备有限公司的技术支持，在清远和广州设立两大培训基地，
+            致力于无人机技术推广、FPV穿越机培训、CAAC驾驶执照考证辅导、赛事组织与科普教育。
+          </p>
+          <p>
+            我们与多所高校、教育机构深度合作，打造从入门到职业的系统化培养体系，
+            让每一位学员都能在天空中找到属于自己的舞台。
+          </p>
+          <a href="about.html" class="btn btn-primary" style="margin-top:12px;">了解更多 →</a>
+        </div>
+        <div class="intro-stats">
+          <div class="intro-stat-card fade-in">
+            <div class="num">2</div>
+            <div class="label">培训基地<br>清远 · 广州</div>
+          </div>
+          <div class="intro-stat-card fade-in">
+            <div class="num">100%</div>
+            <div class="label">零基础<br>可入学</div>
+          </div>
+          <div class="intro-stat-card fade-in">
+            <div class="num">CAAC</div>
+            <div class="label">民航局<br>认证考证</div>
+          </div>
+          <div class="intro-stat-card fade-in">
+            <div class="num">FPV</div>
+            <div class="label">穿越机<br>专业培训</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 核心业务 ======== -->
+  <section class="features-redesign">
     <div class="container">
       <h2 class="section-title fade-in">核心业务</h2>
-      <p class="section-subtitle fade-in">我们从培训到赛事，从科普到飞手人才输送，打造完整的无人机产业服务链</p>
-      <div class="features-grid">
-        <div class="feature-card fade-in">
-          <div class="feature-icon">🎓</div>
+      <p class="section-subtitle fade-in">从培训到赛事，从科普到飞手人才输送，打造完整的无人机产业服务链</p>
+      <div class="features-redesign-grid">
+        <div class="feature-card-r fade-in">
+          <div class="icon-circle">🎓</div>
           <h3>FPV无人机培训</h3>
-          <p>穿越机/FPV无人机专业培训，CAAC驾驶执照考证辅导，零基础到职业飞手一站式教学。</p>
+          <p>穿越机/FPV无人机专业培训，CAAC驾驶执照考证辅导，从零基础到职业飞手一站式教学。</p>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon">🏆</div>
+        <div class="feature-card-r fade-in">
+          <div class="icon-circle">🏆</div>
           <h3>赛事组织</h3>
           <p>策划举办"星驰杯"穿越机大赛，汇聚全国顶尖飞手，打造高水平竞技交流平台。</p>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon">🔬</div>
+        <div class="feature-card-r fade-in">
+          <div class="icon-circle">🔬</div>
           <h3>科普进校园</h3>
           <p>无人机科普教育进校园活动，让青少年近距离感受科技魅力，激发航空梦想。</p>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon">⚽</div>
+        <div class="feature-card-r fade-in">
+          <div class="icon-circle">⚽</div>
           <h3>无人机足球体验</h3>
           <p>创新无人机足球项目，融合体育竞技与无人机操控，趣味与科技并重。</p>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon">👨‍✈️</div>
+        <div class="feature-card-r fade-in">
+          <div class="icon-circle">👨‍✈️</div>
           <h3>飞手人才培养</h3>
           <p>系统化飞手人才培养体系，为行业输送高素质无人机应用人才。</p>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon">📡</div>
+        <div class="feature-card-r fade-in">
+          <div class="icon-circle">📡</div>
           <h3>技术支持</h3>
           <p>广东弘栎电子设备有限公司提供专业技术支持，保障设备与教学质量。</p>
         </div>
@@ -109,40 +672,29 @@
     </div>
   </section>
 
-  <!-- ======== Cases Showcase ======== -->
-  <section class="section cases-section">
+  <!-- ======== 合作伙伴 ======== -->
+  <section class="partners-section">
     <div class="container">
-      <h2 class="section-title fade-in">客户案例</h2>
-      <p class="section-subtitle fade-in">与高校、教育机构深度合作，获得广泛认可</p>
-      <div class="cases-grid">
-        <div class="case-card fade-in">
-          <div class="case-image">🏁</div>
-          <div class="case-body">
-            <span class="case-tag">赛事合作</span>
-            <h3>"星驰杯"穿越机大赛</h3>
-            <p>与广东碧桂园职业学院联合举办"星驰杯"穿越机大赛，吸引全省高校无人机爱好者参与，成为区域最具影响力的穿越机赛事之一。</p>
-            <a href="cases.html" class="case-link">了解更多 →</a>
-          </div>
-        </div>
-        <div class="case-card fade-in">
-          <div class="case-image">🌍</div>
-          <div class="case-body">
-            <span class="case-tag">科普教育</span>
-            <h3>无人机科普进校园</h3>
-            <p>与广东工匠学院联合开展无人机科普进校园活动，覆盖多所中小学，通过飞行表演、动手体验等形式，激发青少年科学兴趣。</p>
-            <a href="cases.html" class="case-link">了解更多 →</a>
-          </div>
-        </div>
+      <h2 class="fade-in">合作机构</h2>
+      <div class="partners-grid fade-in">
+        <span class="partner-item">广东碧桂园职业学院</span>
+        <span class="partner-item">广东工匠学院</span>
+        <span class="partner-item">清远体育中心</span>
+        <span class="partner-item">渔珠汇创意园</span>
+        <span class="partner-item">广东弘栎电子</span>
       </div>
     </div>
   </section>
 
-  <!-- ======== CTA Section ======== -->
-  <section class="cta-section">
+  <!-- ======== CTA ======== -->
+  <section class="cta-redesign">
     <div class="container">
       <h2 class="fade-in">准备好飞向未来了吗？</h2>
       <p class="fade-in">无论你是零基础爱好者，还是寻求合作的教育机构，星驰无人机俱乐部都欢迎你的加入。</p>
-      <a href="contact.html" class="btn btn-primary btn-lg fade-in">立即联系我们</a>
+      <div class="btn-group fade-in">
+        <a href="contact.html" class="btn btn-white btn-lg">立即联系我们</a>
+        <a href="tel:19927635863" class="btn-outline-light">📞 姜老师：199-2763-5863</a>
+      </div>
     </div>
   </section>
 
